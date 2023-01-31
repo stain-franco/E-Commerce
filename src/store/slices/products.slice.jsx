@@ -25,15 +25,10 @@ export const getProductsThunk = () => (dispatch) => {
 
 export const filterCategoriesThunk = (id) => (dispatch) => {
   dispatch(setIsLoading(true));
-  console.log(id);
 
   axios
     .get(`https://e-commerce-api.academlo.tech/api/v1/products?category=${id}`)
-    .then((resp) => {
-        dispatch(setProducts(resp.data.data.products))
-        console.log(resp)
-    })
-
+    .then((resp) => dispatch(setProducts(resp.data.data.products)))
     .catch((error) => console.error(error))
     .finally(() => dispatch(setIsLoading(false)));
 };

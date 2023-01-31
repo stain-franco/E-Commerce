@@ -3,9 +3,11 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom'
+import SideBar from './SideBar'
 
 const NavBar = () => {
     return (
+        <>
         <Navbar bg="primary" variant="primary">
             <Container>
                 <Navbar.Brand as={ Link } to="/" >Products</Navbar.Brand>
@@ -16,6 +18,8 @@ const NavBar = () => {
                 </Nav>
             </Container>
         </Navbar>
+        <SideBar/>
+        </>
     )
 }
 

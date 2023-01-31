@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { Action } from "@remix-run/router"
+import { setIsLoading } from "./isLoading.slice"
+import axios from "axios"
+import getConfig from "../../helpers/getConfig"
+
 
 export const cartSlice = createSlice ({
     name: "cart",
@@ -11,4 +14,26 @@ export const cartSlice = createSlice ({
     }
 })
 
-export const { setCart } = cartSlice.action
+export const getCartThunk = () => dispatch => {
+    dispatch(setIsLoading(true));
+        axios
+        .get(`https://e-commerce-api.academlo.tech/api/v1/cart`, getConfig())
+        .then((resp) => {
+            console.log(resp)
+            dispatch(setCart(resp.data.data.cart.products))})
+        .catch( error => console.error(error) )
+        .finally(() => dispatch(setIsLoading(false)));
+}
+
+export const createCartThunk = (cart) => (dispatch) => {
+    dispatch(setIsLoading(true));
+        axios
+        .post(`https://e-commerce-api.academlo.tech/api/v1/cart`, cart, getConfig())
+        .then((resp) => dispatch(getCartThunk()))
+        .catch(error => console.error(error))
+        .finally(() => dispatch(setIsLoading(false)));
+}
+
+export const { setCart } = cartSlice.actions;
+
+export default cartSlice.reducer;

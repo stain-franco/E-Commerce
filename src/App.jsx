@@ -25,7 +25,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           
           <Route element={ <ProtectedRoutes/> }>
-          <Route path="/purchases" element={<Purchases />} />
+            <Route path="/purchases" element={<Purchases />} />
           </Route>
 
         </Routes>

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,12 +6,15 @@ import { setIsLoading } from "../store/slices/isLoading.slice";
 import { Button, Col, Row, ListGroup } from "react-bootstrap";
 import { filterCategoriesThunk } from "../store/slices/products.slice";
 import Carousel from 'react-bootstrap/Carousel';
+import { createCartThunk } from "../store/slices/cart.slice";
 
 const ProductsDetail = () => {
   const { id } = useParams();
   const [detail, setDetail] = useState({});
   const dispatch = useDispatch();
   const productsRelated = useSelector(state => state.products);
+  const [count, setCount] = useState(1)
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(setIsLoading(true));
@@ -33,6 +36,21 @@ const ProductsDetail = () => {
 
   }, [id]);
 
+  const addToPurchases = () => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const cart = {
+        cart: detail.id,
+        count: count
+      };
+      console.log(cart)
+      dispatch(createCartThunk(cart))
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <div>
       
@@ -43,6 +61,15 @@ const ProductsDetail = () => {
         <h1>{detail.title}</h1>
       <p>{detail.description}</p>
       <p>Price ${detail.price}</p>
+      
+      <Button className="mb-3" onClick={addToPurchases}>
+      Agregar al carrito
+      </Button>
+      <div>
+        <Button onClick={() => setCount(count -1)}>-</Button>
+         {count}
+        <Button onClick={() => setCount(count +1)}>+</Button>
+      </div>
           
          <Carousel 
          
@@ -80,14 +107,12 @@ const ProductsDetail = () => {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-
-    <Button className="mb-3">
-      Agregar al carrito
-    </Button>
   
         </Col>
       </Row>
+      
     </div>
+    
   );
 };
 
