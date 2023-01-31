@@ -80,6 +80,10 @@ const ProductsDetail = () => {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+
+    <Button className="mb-3">
+      Agregar al carrito
+    </Button>
   
         </Col>
       </Row>
