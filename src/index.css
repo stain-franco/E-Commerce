@@ -64,3 +64,11 @@ p {
   flex-direction: column;
   align-items: center;
 }
+.container-navbar{
+  display: flex;
+  align-items: center;
+  
+}
+.container-navbar-big{
+  display: flex;
+}
