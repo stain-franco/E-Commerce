@@ -23,7 +23,7 @@ const ProductsDetail = () => {
       .get(`https://e-commerce-api.academlo.tech/api/v1/products/${id}`)
       .then((resp) => {
         setDetail(resp.data.data.product)
-        dispatch(filterCategoriesThunk(resp.data.data.category?.id))
+        dispatch(filterCategoriesThunk(resp.data.data.product.id))
       })
       .catch((error) => console.error(error))
       .finally(() => {
@@ -31,9 +31,6 @@ const ProductsDetail = () => {
           dispatch(setIsLoading(false));
         }, 1500);
       })
-
-      
-
   }, [id]);
 
   const addToPurchases = () => {
@@ -41,8 +38,8 @@ const ProductsDetail = () => {
 
     if (token) {
       const cart = {
-        cart: detail.id,
-        count: count
+        id: detail.id,
+        quantity: count
       };
       console.log(cart)
       dispatch(createCartThunk(cart))
