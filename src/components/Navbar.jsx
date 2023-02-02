@@ -36,9 +36,9 @@ const NavBar = () => {
             <div className='container-navbar-big'>
             <Navbar.Brand as={ Link } to="/" >E-Commerce</Navbar.Brand>
                 <div className='container-navbar'>
-                    <Nav.Link as={ Link } to="/login"><FiUser style={{width: 100}}/></Nav.Link>
+                    <Nav.Link as={ Link } to="/login"><FiUser /></Nav.Link>
                     <Nav.Link as={ Link } to="/purchases"><RiStoreLine style={{width: 100}}/></Nav.Link>
-                    <Nav.Link onClick={ handleShow }><BsCart4 style={{width: 100}}/></Nav.Link>
+                    <Nav.Link onClick={ handleShow }><BsCart4 /></Nav.Link>
                 </div>
             </div>
                 
