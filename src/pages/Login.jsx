@@ -53,9 +53,12 @@ const Login = () => {
       :
       <Card style={{ maxWidth: 500, margin: "3rem auto", padding: "2rem" }}>
         <Form onSubmit={(e) => handleSubmit(e)}>
-          <h1>Login</h1>
+          <h3>Welcome! Enter your email and data password to continue</h3>
+          <Form.Label>Test Data</Form.Label>
+          <h6>john@gmail.com</h6>
+          <h6>john1234</h6>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+            
             <Form.Control
               type="email"
               placeholder="Enter email"
@@ -65,10 +68,10 @@ const Login = () => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            
             <Form.Control
               type="password"
-              placeholder="Password"
+              placeholder="Enter password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
