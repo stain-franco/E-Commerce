@@ -6,6 +6,7 @@ import { Button, Col, Row } from "react-bootstrap";
 import { getProductsThunk } from "../store/slices/products.slice";
 import Carousel from 'react-bootstrap/Carousel';
 import { createCartThunk } from "../store/slices/cart.slice";
+import { BsCart4 } from 'react-icons/bs';
 
 const ProductsDetail = () => {
   const { id } = useParams();
@@ -48,7 +49,7 @@ const ProductsDetail = () => {
       <p>Price ${detail?.price}</p>
       
       <Button className="mb-3" onClick={addToPurchases}>
-      Agregar al carrito
+      Add to cart <BsCart4 size={20} style={{margin: 8}}/>
       </Button>
       <div>
         <Button className="mb-1" style={{margin: 5}} onClick={() => setCount(count -1)}>-</Button>

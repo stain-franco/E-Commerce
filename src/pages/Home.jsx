@@ -5,6 +5,8 @@ import { Row, Col, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { setIsLoading } from "../store/slices/isLoading.slice";
+import { BsFillHouseDoorFill } from 'react-icons/bs';
+
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -42,7 +44,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Home</h1>
+      <h1> <BsFillHouseDoorFill size={25} style={{margin: 10}}/>Home<BsFillHouseDoorFill size={25} style={{margin: 10}}/> </h1>
       <form onSubmit={(e) => handleSearch(e)} className="d-flex">
         <input 
         id="product" 
@@ -71,7 +73,7 @@ const Home = () => {
       className="m-2" 
       variant="primary" 
       onClick={() => dispatch(getProductsThunk())}>
-        Ver todos
+        See all
       </Button>
       <Row xs={1} md={2} lg={3}>
         {dataProducts?.map((productsItem) => (
@@ -94,7 +96,7 @@ const Home = () => {
                 <Card.Title>{productsItem.title}</Card.Title>
                 <Card.Text>Price ${productsItem.price}</Card.Text>
                 <Button variant="primary" as={Link} to={`/products/${productsItem.id}`}>
-                  Ver detalle
+                See details
                 </Button>
               </Card.Body>
             </Card>
