@@ -1,9 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsLoading } from "../store/slices/isLoading.slice";
-import { Button, Col, Row, ListGroup } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import { getProductsThunk } from "../store/slices/products.slice";
 import Carousel from 'react-bootstrap/Carousel';
 import { createCartThunk } from "../store/slices/cart.slice";
@@ -15,9 +14,10 @@ const ProductsDetail = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
+    dispatch(setIsLoading(true))
     dispatch(getProductsThunk())
+    dispatch(setIsLoading(false))
   
-
   }, [id]);
 
   const allProducts = useSelector((state) => state.products);
@@ -28,7 +28,6 @@ const ProductsDetail = () => {
 
   const addToPurchases = () => {
     const token = localStorage.getItem("token");
-
     if (token) {
       const cart = {
         id: detail.id,
@@ -40,13 +39,9 @@ const ProductsDetail = () => {
       navigate("/login");
     }
   };
-
   return (
     <div>
-      
-      
       <Row className="sliceLabel">
-        
         <Col lg={9}>
         <h1>{detail?.title}</h1>
       <p>{detail?.description}</p>
@@ -87,9 +82,7 @@ const ProductsDetail = () => {
     </Carousel>
         </Col>
       </Row>
-      
     </div>
-    
   );
 };
 

@@ -10,8 +10,6 @@ import { RiStoreLine } from 'react-icons/ri';
 import { BsCart4 } from 'react-icons/bs';
 
 
-
-
 const NavBar = () => {
 
     const [show, setShow] = useState(false);
@@ -36,9 +34,9 @@ const NavBar = () => {
             <div className='container-navbar-big'>
             <Navbar.Brand style={{ color: 'white'}} as={ Link } to="/" >E-Commerce</Navbar.Brand>
                 <div className='container-navbar'>
-                    <Nav.Link as={ Link } to="/login"><FiUser style={{width: 70, color: 'white', }} /></Nav.Link>
-                    <Nav.Link as={ Link } to="/purchases"><RiStoreLine style={{width: 70, color: 'white'}}/></Nav.Link>
-                    <Nav.Link onClick={ handleShow }><BsCart4 style={{width: 70, color: 'white'}}/></Nav.Link>
+                    <Nav.Link as={ Link } to="/login"><FiUser style={{width: 70, color: 'white', }} size={30} /></Nav.Link>
+                    <Nav.Link as={ Link } to="/purchases"><RiStoreLine style={{width: 70, color: 'white'}} size={30}/></Nav.Link>
+                    <Nav.Link onClick={ handleShow }><BsCart4 style={{width: 70, color: 'white'}} size={30}/></Nav.Link>
                 </div>
             </div>
                 

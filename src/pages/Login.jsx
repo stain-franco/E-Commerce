@@ -1,16 +1,18 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AlertError from "../components/AlertError";
+import { FaUserCircle } from 'react-icons/fa';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [alert, setAlert] = useState(false);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,8 +34,23 @@ const Login = () => {
       });
   };
 
+  const [isLogged, setIsLogged] = useState(localStorage.getItem("token"));
+  const logout = () => {
+    localStorage.clear
+    setIsLogged(false)
+  }
+
   return (
     <>
+    {
+      isLogged ?
+      <div className="card-user-logout">
+        <FaUserCircle className="icon-user" size={70} />
+        <Card  style={{ maxWidth: 500, margin: "3rem auto", padding: "2rem" }}>
+        <Button onClick={logout}>Log out</Button>
+      </Card>
+      </div>
+      :
       <Card style={{ maxWidth: 500, margin: "3rem auto", padding: "2rem" }}>
         <Form onSubmit={(e) => handleSubmit(e)}>
           <h1>Login</h1>
@@ -61,7 +78,7 @@ const Login = () => {
           </Button>
         </Form>
       </Card>
-
+    }
       <AlertError isVisible={alert} dismiss={() => setAlert(false)} />
     </>
   );

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { Table } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import getConfig from '../helpers/getConfig';
@@ -40,8 +41,20 @@ const SideBar = ({show, handleClose}) => {
                  ?
                 purchases.map(cart=>(
                      <div key={cart?.title} className='container-SideBar'>
-                        <h4>{cart?.title}</h4>
-                        <h3 >{cart?.productsInCart.quantity}</h3>
+                        <Table striped bordered hover>
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Total quantity</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{cart?.title}</td>
+                                <td>{cart?.productsInCart.quantity}</td>
+                            </tr>
+                            </tbody>
+                        </Table>            
                      </div>
                 ))
                 :

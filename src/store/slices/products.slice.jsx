@@ -33,18 +33,6 @@ export const filterCategoriesThunk = (id) => (dispatch) => {
     .finally(() => dispatch(setIsLoading(false)));
 };
 
-export const filterCategoriesNameThunk = (value) => (dispatch) => {
-  dispatch(setIsLoading(true));
-
-  axios
-    .get(`https://e-commerce-api.academlo.tech/api/v1/products?query=${value}`)
-    .then((resp) => dispatch(setProducts(resp.data.data.products)))
-    .catch((error) => console.error(error))
-    .finally(() => dispatch(setIsLoading(false)));
-};
-
-
-// "https://e-commerce-api.academlo.tech/api/v1/products?QUERY=${inputVALUE}"
 
 export const { setProducts } = productsSlice.actions;
 

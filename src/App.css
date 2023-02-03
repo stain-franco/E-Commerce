@@ -33,3 +33,11 @@
     opacity: 0;
   }
   
+  .card-user-logout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .icon-user{
+   margin-top: 70px;
+  }

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Row, Col, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { setIsLoading } from "../store/slices/isLoading.slice";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -13,12 +14,14 @@ const Home = () => {
   const [dataProducts, setDataProducts] = useState([]);
 
   useEffect(() => {
+    dispatch(setIsLoading(true));
     dispatch(getProductsThunk());
 
     axios
       .get("https://e-commerce-api.academlo.tech/api/v1/products/categories")
       .then((resp) => setCategories(resp.data.data.categories))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => dispatch(setIsLoading(false)));
   }, []);
 
   useEffect( () => {
