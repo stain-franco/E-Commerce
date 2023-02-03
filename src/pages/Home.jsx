@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { setIsLoading } from "../store/slices/isLoading.slice";
 import { BsFillHouseDoorFill } from 'react-icons/bs';
+import { BsCart4 } from 'react-icons/bs';
+import addToPurchases from '../pages/ProductDetail'
 
 
 const Home = () => {
@@ -40,6 +42,8 @@ const Home = () => {
     const productsFiltered = products.filter(products => products.title.toLowerCase().includes(inputName));
     
     setDataProducts(productsFiltered);
+
+    
 }
 
   return (
@@ -98,6 +102,12 @@ const Home = () => {
                 <Button variant="primary" as={Link} to={`/products/${productsItem.id}`}>
                 See details
                 </Button>
+                <Button 
+                className="mb-3" 
+                style={{marginLeft: 50, marginTop: 10}}
+                onClick={addToPurchases}>
+                   <BsCart4 size={20} />
+                </Button>           
               </Card.Body>
             </Card>
           </Col>
