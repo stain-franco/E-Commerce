@@ -40,18 +40,18 @@ const Home = () => {
   return (
     <div>
       <h1>Home</h1>
-      <form onSubmit={(e) => handleSearch(e)}>
-        <label htmlFor="">
-          Filter By productName
-        </label>
+      <form onSubmit={(e) => handleSearch(e)} className="d-flex">
         <input 
-        type="text" 
-        id="product"
-        placeholder="Search"
-        />
+        id="product" 
+        className="form-control me-sm-2" 
+        type="search" placeholder="Search" 
+        spellCheck="false" data-ms-editor="true"/>
         <button 
         onClick={filterByName} 
-        type="submit">Search</button>
+        className="btn btn-primary my-2 my-sm-0" 
+        type="submit"
+        >Search</button>
+      
       </form>
       {categories?.map((category) => (
         <Button
@@ -62,6 +62,7 @@ const Home = () => {
         >
           {category.name}
         </Button>
+        
       ))}
       <Button 
       className="m-2" 

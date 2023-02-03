@@ -56,25 +56,19 @@ const ProductsDetail = () => {
       Agregar al carrito
       </Button>
       <div>
-        <Button onClick={() => setCount(count -1)}>-</Button>
+        <Button className="mb-1" style={{margin: 5}} onClick={() => setCount(count -1)}>-</Button>
          {count}
-        <Button onClick={() => setCount(count +1)}>+</Button>
+        <Button className="mb-1" style={{margin: 5}} onClick={() => setCount(count +1)}>+</Button>
       </div>
-          
-         <Carousel 
-         
-         variant="dark">
-      <Carousel.Item
-      
-      >
+        </Col>
+        <Col lg={9}>
+        <Carousel variant="dark">
+      <Carousel.Item>
         <img
           className="d-block w-100"
           src={detail?.productImgs?.[0]}
           alt="First slide"
         />
-        <Carousel.Caption>
-          
-        </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
@@ -82,9 +76,6 @@ const ProductsDetail = () => {
           src={detail?.productImgs?.[1]}
           alt="Second slide"
         />
-        <Carousel.Caption>
-        
-        </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
@@ -92,12 +83,8 @@ const ProductsDetail = () => {
           src={detail?.productImgs?.[2]}
           alt="Third slide"
         />
-        <Carousel.Caption>
-          
-        </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-  
         </Col>
       </Row>
       
