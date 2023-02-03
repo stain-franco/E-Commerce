@@ -6,6 +6,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AlertError from "../components/AlertError";
 import { FaUserCircle } from 'react-icons/fa';
+import { VscMail } from 'react-icons/vsc';
+import { VscLock } from 'react-icons/vsc';
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -54,9 +57,11 @@ const Login = () => {
       <Card style={{ maxWidth: 500, margin: "3rem auto", padding: "2rem" }}>
         <Form onSubmit={(e) => handleSubmit(e)}>
           <h3>Welcome! Enter your email and data password to continue</h3>
-          <Form.Label>Test Data</Form.Label>
-          <h6>john@gmail.com</h6>
-          <h6>john1234</h6>
+          <div className="testData">
+          <h5>Test Data</h5>
+          <h6><VscMail size={25} style={{margin: 10}}/> john@gmail.com</h6>
+          <h6><VscLock size={25} style={{margin: 10}}/> john1234</h6>
+          </div>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             
             <Form.Control
@@ -77,7 +82,7 @@ const Login = () => {
             />
           </Form.Group>
           <Button variant="primary" type="submit">
-            Submit
+            Login
           </Button>
         </Form>
       </Card>
