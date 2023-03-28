@@ -23,7 +23,7 @@ const Home = () => {
 
     axios
       .get("https://e-commerce-backend-uunu.onrender.com/products")
-      .then((resp) => setCategories(resp.data.data.categories))
+      .then((resp) => setCategories(resp.data.categories))
       .catch((error) => console.error(error))
       .finally(() => dispatch(setIsLoading(false)));
   }, []);

@@ -20,7 +20,7 @@ export const getCartThunk = () => dispatch => {
         .get(`https://e-commerce-backend-uunu.onrender.com/carts`, getConfig())
         .then((resp) => {
             console.log(resp)
-            dispatch(setCart(resp.data.data.cart.products))})
+            dispatch(setCart(resp.data.cart.products))})
         .catch( error => console.error(error) )
         .finally(() => dispatch(setIsLoading(false)));
 }

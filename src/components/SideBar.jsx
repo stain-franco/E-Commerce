@@ -12,7 +12,7 @@ const SideBar = ({show, handleClose}) => {
     useEffect( () => {
         axios
         .get("https://e-commerce-backend-uunu.onrender.com/carts", getConfig() )
-        .then(resp => setPurchases(resp.data.data.cart.products))
+        .then(resp => setPurchases(resp.data))
         .catch(error => console.log(error))
     },[show])
 

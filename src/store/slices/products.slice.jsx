@@ -18,7 +18,7 @@ export const getProductsThunk = () => (dispatch) => {
 
   axios
     .get("https://e-commerce-backend-uunu.onrender.com/products")
-    .then((resp) => dispatch(setProducts(resp.data.data.products)))
+    .then((resp) => dispatch(setProducts(resp.data.products)))
     .catch((error) => console.error(error))
     .finally(() => dispatch(setIsLoading(false)));
 };
@@ -28,7 +28,7 @@ export const filterCategoriesThunk = (id) => (dispatch) => {
 
   axios
     .get(`https://e-commerce-backend-uunu.onrender.com/products=${id}`)
-    .then((resp) => dispatch(setProducts(resp.data.data.products)))
+    .then((resp) => dispatch(setProducts(resp.data.products)))
     .catch((error) => console.error(error))
     .finally(() => dispatch(setIsLoading(false)));
 };

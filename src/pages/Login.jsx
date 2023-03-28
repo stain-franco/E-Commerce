@@ -28,7 +28,8 @@ const Login = () => {
     axios
       .post("https://e-commerce-backend-uunu.onrender.com/users/login", data)
       .then((resp) => {
-        localStorage.setItem("token", resp.data.data.token);
+        console.log(resp.data.token)
+        localStorage.setItem("token", resp.data.token);
         navigate("/");
       })
       .catch((error) => {

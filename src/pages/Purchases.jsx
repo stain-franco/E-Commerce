@@ -14,16 +14,18 @@ export const Purchases = () => {
     dispatch(setIsLoading(true));
     axios
     .get("https://e-commerce-backend-uunu.onrender.com/purchases", getConfig())
-    .then(resp => setPurchases(resp.data.data.purchases))
+    .then(resp => setPurchases(resp.data))
       
     .finally(() => dispatch(setIsLoading(false)));
   },[])
-
+  console.log(purchases)
   return (
     <div>
         <h1>Purchases</h1>
         {
+
           purchases.map (item => {
+            
             return item.cart.products.map( item => 
             <div key={item.title} className="container-purchases">
             <Table striped bordered hover>
