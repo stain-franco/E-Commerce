@@ -60,7 +60,7 @@ const Login = () => {
           <h3>Welcome! Enter your email and data password to continue</h3>
           <div className="testData">
           <h5>Test Data</h5>
-          <h6><VscMail size={25} style={{margin: 10}}/> john@gmail.com</h6>
+          <h6><VscMail size={25} style={{margin: 10}}/> john1@gmail.com</h6>
           <h6><VscLock size={25} style={{margin: 10}}/> john1234</h6>
           </div>
           <Form.Group className="mb-3" controlId="formBasicEmail">

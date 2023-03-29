@@ -20,11 +20,9 @@ const SideBar = ({show, handleClose}) => {
         axios
         .post("https://e-commerce-backend-uunu.onrender.com/purchases",
         {
-            "street": "Green St. 1456",
-            "colony": "Southwest",
-            "zipCode": 12345,
-            "city": "USA",
-            "references": "Some references"
+            "quantity": 3,
+            "productId": 2,
+            "userId": 1
         }, getConfig())
         .then(resp => setPurchases([]))
         .catch(error => console.log(error))
@@ -37,10 +35,12 @@ const SideBar = ({show, handleClose}) => {
             </Offcanvas.Header>
             <Offcanvas.Body>
             {
-                purchases.length != 0
+                purchases.length !== 0
                  ?
+                 
                 purchases.map(cart=>(
-                     <div key={cart?.title} className='container-SideBar'>
+                    
+                     <div key={cart.title} className='container-SideBar'>
                         <Table striped bordered hover>
                             <thead>
                             <tr>
@@ -50,8 +50,8 @@ const SideBar = ({show, handleClose}) => {
                             </thead>
                             <tbody>
                             <tr>
-                                <td>{cart?.title}</td>
-                                <td>{cart?.productsInCart.quantity}</td>
+                                <td>{cart.product.title}</td>
+                                <td>{cart.quantity}</td>
                             </tr>
                             </tbody>
                         </Table>            

@@ -10,43 +10,44 @@ export const Purchases = () => {
   const [purchases, setPurchases] = useState([])
   const dispatch = useDispatch();
 
+
+
   useEffect( () =>{
     dispatch(setIsLoading(true));
     axios
     .get("https://e-commerce-backend-uunu.onrender.com/purchases", getConfig())
     .then(resp => setPurchases(resp.data))
-      
     .finally(() => dispatch(setIsLoading(false)));
   },[])
-  console.log(purchases)
+console.log(purchases)
   return (
     <div>
         <h1>Purchases</h1>
         {
+          purchases.length > 0 ?
 
-          purchases.map (item => {
+          purchases.map (purchase => (  
+
             
-            return item.cart.products.map( item => 
-            <div key={item.title} className="container-purchases">
-            <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>total</th>
-                <th>Name</th>
-                <th>State</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{item.productsInCart.quantity}</td>
-                <td>{item.title}</td>
-                <td>{item.productsInCart.status}</td>
-              </tr>
-            </tbody>
-          </Table>
-          </div>
+              <div key={purchase.title} className="container-purchases">
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th>total</th>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{purchase.quantity}</td>
+                      <td>{purchase?.product?.title}</td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </div>
             )
-          })
+          ) :
+          <h2>No hay compras realizadas</h2>
         }
     </div>
   )

@@ -13,7 +13,7 @@ import addToPurchases from '../pages/ProductDetail'
 const Home = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
-  const [categories, setCategories] = useState([]);
+  const [category, setCategories] = useState([]);
   const [inputName, setInputName] = useState("");
   const [dataProducts, setDataProducts] = useState([]);
 
@@ -23,7 +23,7 @@ const Home = () => {
 
     axios
       .get("https://e-commerce-backend-uunu.onrender.com/products")
-      .then((resp) => setCategories(resp.data.categories))
+      .then((resp) => setCategories(resp.data))
       .catch((error) => console.error(error))
       .finally(() => dispatch(setIsLoading(false)));
   }, []);
@@ -45,7 +45,7 @@ const Home = () => {
 
     
 }
-
+console.log(category)
   return (
     <div>
       <h1> <BsFillHouseDoorFill size={25} style={{margin: 10}}/>Home<BsFillHouseDoorFill size={25} style={{margin: 10}}/> </h1>
@@ -62,7 +62,7 @@ const Home = () => {
         >Search</button>
       
       </form>
-      {categories?.map((category) => (
+      {category.map((category) => (
         <Button
           className="m-1"
           key={category.name}
@@ -87,11 +87,11 @@ const Home = () => {
               <Card.Img 
 
                 variant=""
-                src={productsItem.productImgs[1]}
+                src={productsItem.productImgs[1]?.url}
                 style={{ height: 200, objectFit:"contain" }}
               />
               <img className="container-cover-img" 
-              src={productsItem.productImgs[0]} 
+              src={productsItem.productImgs[0]?.url} 
               alt=""
               style={{ height: 200, objectFit:"contain" }}
                />

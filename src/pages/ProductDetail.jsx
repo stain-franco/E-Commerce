@@ -24,14 +24,14 @@ const ProductsDetail = () => {
   const allProducts = useSelector((state) => state.products);
   const detail = allProducts.find((products) => products.id === Number(id));
   const productsRelated = allProducts.filter(
-    (products) => products.category.name === detail.category.name
+    (products) => products.title === detail.title
   );
 
   const addToPurchases = () => {
     const token = localStorage.getItem("token");
     if (token) {
       const cart = {
-        id: detail.id,
+        productId: detail.id,
         quantity: count
       };
       console.log(cart)
@@ -62,21 +62,21 @@ const ProductsDetail = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={detail?.productImgs?.[0]}
+          src={detail?.productImg?.[0]}
           alt="First slide"
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={detail?.productImgs?.[1]}
+          src={detail?.productImg?.[1]}
           alt="Second slide"
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={detail?.productImgs?.[2]}
+          src={detail?.productImg?.[2]}
           alt="Third slide"
         />
       </Carousel.Item>
